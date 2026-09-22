@@ -1,7 +1,4 @@
 #include "damiao.h"
-#include "freertos/projdefs.h"
-#include <stdio.h>
-#include "driver/twai.h"
 #include "esp_log.h"
 
 #define MAIN_TAG "main"

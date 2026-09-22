@@ -1,5 +1,5 @@
 #include "damiao.h"
-#include "driver/twai.h"
+#include "esp_twai_onchip.h"
 #include "esp_log.h"
 
 #define DAMIAO_TAG "damiao"
@@ -109,12 +109,8 @@ void pack_cmd(uint8_t *data, float pos, float vel, float kp, float kd, float tor
     data[7] = t_int;
 }
 
-esp_err_t twai_init(gpio_num_t tx, gpio_num_t rx){
-    twai_general_config_t g_config =TWAI_GENERAL_CONFIG_DEFAULT(tx,rx,TWAI_MODE_NORMAL);
-    twai_timing_config_t t_config =TWAI_TIMING_CONFIG_1MBITS();
-    twai_filter_config_t f_config =TWAI_FILTER_CONFIG_ACCEPT_ALL();
-
-    ESP_ERROR_CHECK(twai_driver_install(&g_config,&t_config,&f_config));
+esp_err_t dm_twai_init(gpio_num_t tx, gpio_num_t rx){
+    twai
 
     return twai_start();
 }
